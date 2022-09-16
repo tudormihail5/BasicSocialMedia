@@ -1,4 +1,4 @@
-# BasicSocialMedia
+# Basic Social Media
 
 ### What it does:
 
