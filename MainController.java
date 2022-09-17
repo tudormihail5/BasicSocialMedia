@@ -1,6 +1,4 @@
 package com.bham.fsd.assignments.jabberserver;
-//Tudor Ioan Mihail
-//2189905
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
