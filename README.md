@@ -18,3 +18,11 @@ This is a basic client-server social media application, written in Java, but als
 ### Challenges I ran into:
 
 It took me a while to find out how to create the automatic refresh. Also, making every button functional without knowing how many they are was a new thing for me. But the first and the most important challenge was to make the server and the client communicate properly.
+
+![SocialMedia1](https://github.com/tudormihail5/BasicSocialMedia/blob/main/Screenshot1.png)
+
+![SocialMedia2](https://github.com/tudormihail5/BasicSocialMedia/blob/main/Screenshot2.png)
+
+![SocialMedia3](https://github.com/tudormihail5/BasicSocialMedia/blob/main/Screenshot3.png)
+
+![SocialMedia4](https://github.com/tudormihail5/BasicSocialMedia/blob/main/Screenshot4.png)
