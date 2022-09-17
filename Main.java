@@ -1,6 +1,4 @@
 package com.bham.fsd.assignments.jabberserver;
-//Tudor Ioan Mihail
-//2189905
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
