@@ -21,8 +21,16 @@ It took me a while to find out how to create the automatic refresh. Also, making
 
 ![SocialMedia1](https://github.com/tudormihail5/BasicSocialMedia/blob/main/Screenshot1.png)
 
+After compiling the client.
+
 ![SocialMedia2](https://github.com/tudormihail5/BasicSocialMedia/blob/main/Screenshot2.png)
+
+After signing in as 'donaldJtrump'.
 
 ![SocialMedia3](https://github.com/tudormihail5/BasicSocialMedia/blob/main/Screenshot3.png)
 
+The user adds 'kim' and now can see every post and like them.
+
 ![SocialMedia4](https://github.com/tudormihail5/BasicSocialMedia/blob/main/Screenshot4.png)
+
+The user can post a message, which will appear in the timeline.
