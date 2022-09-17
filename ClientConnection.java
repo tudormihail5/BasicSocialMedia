@@ -5,7 +5,6 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 
-//Paul Aldea 2210814
 public class ClientConnection implements Runnable{
 	
 	private Socket clientSocket;
