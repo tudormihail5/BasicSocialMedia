@@ -5,8 +5,6 @@ import java.net.Socket;
 
 import com.bham.fsd.assignments.jabberserver.ClientConnection;
 
-//Paul Aldea 2210814
-
 public class JabberServer implements Runnable{
 	
 	private static final int PORT_NUMBER = 44444;
@@ -22,8 +20,8 @@ public class JabberServer implements Runnable{
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-		}//end catch
-	}//end JabberServer
+		}
+	}
 	
 	@Override
 	public void run() {
@@ -37,7 +35,7 @@ public class JabberServer implements Runnable{
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-	}//end of run
+	}
 	
 	public static void main(String[] args) {
 		JabberServer jab = new JabberServer();
