@@ -7,10 +7,14 @@ This is a basic client-server social media application, written in Java, but als
 ### How I built it:
 
 - I used Scene Builder to create the GUI.
-- I created every functionality of the GUI in MainController, including the automatic refresh of the app, users being able to communicate in real time.
-- MainController is also sending the requests to the server.
+- I created every functionality of the GUI in MainController, including the automatic refresh of the app (every 5 seconds), users being able to communicate in real time.
+- MainController is also sending the requests to the server, using sockets.
 - The Main class starts the application, loading Main.fxml, setting the size of the GUI, and displaying it.
 - JabberMessage eases the communication between the server and the client, and is used by MainController to send the messages, but also by ClientConnection.
-- 
+- ClientConnection receives the messages from the client, and completes the task, using the settled protocol.
+- JabberDatabase deals with the database, adding things to it, or reading information requested by the server.
+- JabberServer runs the server, delivering a 'Waiting' (for a client) message after compiling.
 
 ### Challenges I ran into:
+
+It took me a while to find out how to create the automatic refresh. Also, making every button functional without knowing how many they are was a new thing for me. But the first and the most important challenge was to make the server and the client communicate properly.
