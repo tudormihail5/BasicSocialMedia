@@ -11,11 +11,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 
-/**
- * 
- * @author iankenny
- * The JabberDatabase class. Formerly known as 'JabberServer'.
- */
 public class JabberDatabase {
 	
 	private static String dbcommand = "jdbc:postgresql://127.0.0.1:5432/postgres";
@@ -23,20 +18,11 @@ public class JabberDatabase {
 	private static String pw = "password";
 
 	private Connection conn;
-	
-	/**
-	 * Returns the current database connection.
-	 * @return the database connection.
-	 */
+
 	public Connection getConnection() {
 		return conn;
 	}
 
-	/**
-	 * This method returns a list of the userids of users following the user with the userid in the parameter.
-	 * @param userid the userid of the user.
-	 * @return a list of the userids of users following the user.
-	 */
 	public ArrayList<String> getFollowerUserIDs(int userid) {
 
 		ArrayList<String> ret = new ArrayList<String>();
@@ -60,11 +46,6 @@ public class JabberDatabase {
 		return ret;
 	}
 
-	/**
-	 * This method returns a list of the userids of users being followed by the user in the parameter.
-	 * @param userid The userid of the user.
-	 * @return a list of the userids of users being followed by the user.
-	 */
 	public ArrayList<String> getFollowingUserIDs(int userid) {
 
 		ArrayList<String> ret = new ArrayList<String>();
@@ -87,11 +68,7 @@ public class JabberDatabase {
 		
 		return ret;
 	}
-	
-	/**
-	 * This method returns a list of pairs of users who follow each other. Each pair is only listed once.
-	 * @return a list of 'mutual' follows, i.e. users who follow each other.
-	 */
+
 	public ArrayList<ArrayList<String>> getMutualFollowUserIDs() {
 
 		ArrayList<ArrayList<String>> ret = new ArrayList<ArrayList<String>>();
@@ -116,11 +93,6 @@ public class JabberDatabase {
 		return removeDuplicates(ret);		
 	}
 
-	/**
-	 * This method returns a list of the usernames of users not followed by the user with the userid in the parameter.
-	 * @param userid the userid of the user.
-	 * @return a list of the usernames of users not followed by the user.
-	 */
 	public ArrayList<ArrayList<String>> getUsersNotFollowed(int userid) {
 		
 		ArrayList<ArrayList<String>> ret = new ArrayList<ArrayList<String>>();
@@ -146,11 +118,6 @@ public class JabberDatabase {
 		return ret;
 	}
 
-	/**
-	 * This method returns list of [username, jabtext] pairs of jabs liked by the user.
-	 * @param userid the userid of the user.
-	 * @return a list of [username, jabtext] pairs of the jabs liked by the user.
-	 */
 	public ArrayList<ArrayList<String>> getLikesOfUser(int userid) {
 		
 		ArrayList<ArrayList<String>> ret = new ArrayList<ArrayList<String>>();
@@ -177,11 +144,6 @@ public class JabberDatabase {
 		return ret;
 	}
 
-	/**
-	 * This method returns the timeline of the user as [username, jabtext] pairs.
-	 * @param username the username of the user.
-	 * @return the timeline of the user.
-	 */
 	@Deprecated
 	public ArrayList<ArrayList<String>> getTimelineOfUser(String username) {
 	
@@ -194,12 +156,6 @@ public class JabberDatabase {
 		return null;
 	}
 
-	/**
-	 * This method returns the timeline of the user. Each jab in the returned list has the following
-	 * data: [username, jabtext, jabid, number-of-likes].
-	 * @param username the username of the user.
-	 * @return the timeline of the user.
-	 */
 	public ArrayList<ArrayList<String>> getTimelineOfUserEx(String username) {
 		
 		int userid = this.getUserID(username);
@@ -211,11 +167,6 @@ public class JabberDatabase {
 		return null;
 	}
 
-	/**
-	 * This method returns the timeline of the user as [username, jabtext] pairs.
-	 * @param userid the userid of the user.
-	 * @return the timeline of the user.
-	 */
 	@Deprecated
 	public ArrayList<ArrayList<String>> getTimelineOfUser(int userid) {
 
@@ -243,12 +194,6 @@ public class JabberDatabase {
 		return ret;
 	}
 
-	/**
-	 * This method returns the timeline of the user. Each jab in the returned list has the following
-	 * data: [username, jabtext, jabid, number-of-likes].
-	 * @param userid the userid of the user.
-	 * @return the timeline of the user.
-	 */
 	public ArrayList<ArrayList<String>> getTimelineOfUserEx(int userid) {
 
 		ArrayList<ArrayList<String>> ret = new ArrayList<ArrayList<String>>();
@@ -280,11 +225,6 @@ public class JabberDatabase {
 		return ret;
 	}
 
-	/**
-	 * This method adds a jab from the user username.
-	 * @param username the username of the user.
-	 * @param jabtext the text of the jab.
-	 */
 	public void addJab(String username, String jabtext) {
 		
 		int userid = getUserID(username);
@@ -305,12 +245,7 @@ public class JabberDatabase {
 			e.printStackTrace();
 		}
 	}
-	
-	/**
-	 * This method adds a new user to the platform.
-	 * @param username the username of the new user.
-	 * @param emailadd the email address of the new user.
-	 */
+
 	public void addUser(String username, String emailadd) {
 		
 		int newid = getNextUserID();
@@ -332,11 +267,6 @@ public class JabberDatabase {
 		}
 	}
 
-	/**
-	 * This method adds a new follows relationship between users: the user userida follows the user useridb.
-	 * @param userida the user who is doing the following.
-	 * @param useridb the user being followed.
-	 */
 	public void addFollower(int userida, int useridb) {
 		
 		try {
@@ -353,11 +283,6 @@ public class JabberDatabase {
 		}
 	}
 
-	/**
-	 * This method adds a new follows relationship between users: userida follows user username.
-	 * @param userida the user whow is doing the following.
-	 * @param username the username of the user being followed.
-	 */
 	public void addFollower(int userida, String username) {
 		
 		int useridb = this.getUserID(username);
@@ -380,11 +305,6 @@ public class JabberDatabase {
 		}
 	}
 
-	/**
-	 * This method adds a new like: the user with user id userid likes the jab with jab id jabid.
-	 * @param userid the user.
-	 * @param jabid the jab.
-	 */
 	public void addLike(int userid, int jabid) {
 		try {
 
@@ -400,10 +320,6 @@ public class JabberDatabase {
 		}
 	}
 	
-	/**
-	 * This method returns a list of users with the most followers.
-	 * @return a list of the users with the most followers.
-	 */
 	public ArrayList<String> getUsersWithMostFollowers() {
 		
 		ArrayList<String> ret = new ArrayList<String>();
@@ -451,11 +367,6 @@ public class JabberDatabase {
 		return maxid + 1;
 	}
 
-	/**
-	 * A convenience method to get the userid of the user with user name username.
-	 * @param username the username of the user.
-	 * @return the userid of the user.
-	 */
 	public int getUserID(String username) {
 		
 		int ret = -1;
@@ -522,17 +433,11 @@ public class JabberDatabase {
 		return ret;
 	}
 
-	/**
-	 * Default constructor. Connects to the database.
-	 */
 	public JabberDatabase() {
 		connectToDatabase();
 		//resetDatabase();
 	}
-	
-	/**
-	 * Connects to the database. No need to call this as it is called by the default constuctor.
-	 */
+
 	public void connectToDatabase() {
 
 		try {
@@ -543,9 +448,6 @@ public class JabberDatabase {
 		}
 	}
 
-	/*
-	 * Utility method to print an ArrayList of ArrayList<String>s to the console.
-	 */
 	private static void print2(ArrayList<ArrayList<String>> list) {
 		
 		for (ArrayList<String> s: list) {
@@ -553,10 +455,7 @@ public class JabberDatabase {
 			System.out.println();
 		}
 	}
-		
-	/*
-	 * Utility method to print an ArrayList to the console.
-	 */
+	
 	private static void print1(ArrayList<String> list) {
 		
 		for (String s: list) {
@@ -564,12 +463,6 @@ public class JabberDatabase {
 		}
 	}
 
-	/**
-	 * Resets the database to the origi nal data set. This method requires that the files
-	 * jabberdef.sql and jabberdata.sql are in the working folder of the JabberDatabase project
-	 * (e.g. the root directory of the project). You don't have to use this method. It exists 
-	 * in case you need to sort out the database if it has been messed up.
-	 */
 	public void resetDatabase() {
 		
 		dropTables();
@@ -595,11 +488,6 @@ public class JabberDatabase {
 	}
 
 	private ArrayList<String> loadSQL(String sqlfile) {
-		
-		/*
-		 * This method is to be used only by the resetDatabase() code. 
-		 * Do not use it yourself to load your own SQL.
-		 */
 		
 		ArrayList<String> commands = new ArrayList<String>();
 		
